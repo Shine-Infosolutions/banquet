@@ -1,20 +1,80 @@
 const mongoose = require("mongoose");
 
 const bookingSchema = new mongoose.Schema({
-  booking_id: String,
-  whatsapp_no: String,
-  email: String,
-  password: String,
-  guest_name: String,
-  mobile_no: String,
-  no_of_packs: Number,
-  rate_plan: String,
-  notes: String,
-  advance_payment: Number,
-  total_payment: Number,
-  balance: Number,
-  veg_non_veg: String,
-  menu_item: String,
+  booking_id: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true
+  },
+  whatsapp_no: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  email: {
+    type: String,
+    required: true,
+    lowercase: true,
+    trim: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  guest_name: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  mobile_no: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  no_of_packs: {
+    type: Number,
+    required: true,
+    min: 1
+  },
+  rate_plan: {
+    type: String,
+    required: true
+  },
+  notes: {
+    type: String,
+    default: ""
+  },
+  advance_payment: {
+    type: Number,
+    required: true,
+    min: 0
+  },
+  total_payment: {
+    type: Number,
+    required: true,
+    min: 0
+  },
+  balance: {
+    type: Number,
+    required: true,
+    min: 0
+  },
+  veg_non_veg: {
+    type: String,
+    required: true,
+    enum: ["Veg", "Non-Veg", "Both"]
+  },
+  menu_item: {
+    type: [String],
+    required: true,
+    validate: {
+      validator: function (v) {
+        return Array.isArray(v) && v.length > 0;
+      },
+      message: "At least one menu item is required."
+    }
+  }
 }, { timestamps: true });
 
 module.exports = mongoose.model("Booking", bookingSchema);
