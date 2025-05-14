@@ -14,6 +14,7 @@ const bookingSchema = new mongoose.Schema({
   total_payment: Number,
   balance: Number,
   veg_non_veg: String,
+  menu_item: String,
 }, { timestamps: true });
 
 module.exports = mongoose.model("Booking", bookingSchema);
