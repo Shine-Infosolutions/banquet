@@ -42,7 +42,7 @@ exports.createBooking = async (req, res) => {
             <tr>
               <td style="padding: 8px; font-weight: bold;">No. of Packs:</td>
               <td style="padding: 8px;">${booking.no_of_packs}</td>
-            </tr>
+            </tr>  
             <tr style="background-color: #f9f9f9;">
               <td style="padding: 8px; font-weight: bold;">Rate Plan:</td>
               <td style="padding: 8px;">${booking.rate_plan}</td>
