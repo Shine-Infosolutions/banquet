@@ -7,6 +7,11 @@ const bookingSchema = new mongoose.Schema({
     unique: true,
     trim: true
   },
+  hall_name: {
+    type: String,
+    required: true,
+    trim: true
+  },
   whatsapp_no: {
     type: String,
     required: true,
@@ -47,7 +52,6 @@ const bookingSchema = new mongoose.Schema({
   },
   advance_payment: {
     type: Number,
-    required: true,
     min: 0
   },
   total_payment: {
@@ -74,6 +78,11 @@ const bookingSchema = new mongoose.Schema({
       },
       message: "At least one menu item is required."
     }
+  },
+  status: {
+    type: String,
+    enum: ["Enquiry", "Confirmed", "Cancelled"],
+    default: "Enquiry"
   }
 }, { timestamps: true });
 

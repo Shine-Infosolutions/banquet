@@ -19,18 +19,64 @@ exports.createBooking = async (req, res) => {
 
     // Construct the booking summary
     const bookingDetails = `
-      <h2>Booking Confirmation</h2>
-      <p><strong>Booking ID:</strong> ${booking.booking_id}</p>
-      <p><strong>Name:</strong> ${booking.guest_name}</p>
-      <p><strong>Mobile No:</strong> ${booking.mobile_no}</p>
-      <p><strong>No. of Packs:</strong> ${booking.no_of_packs}</p>
-      <p><strong>Rate Plan:</strong> ${booking.rate_plan}</p>
-      <p><strong>Advance Payment:</strong> ₹${booking.advance_payment}</p>
-      <p><strong>Total Payment:</strong> ₹${booking.total_payment}</p>
-      <p><strong>Balance:</strong> ₹${booking.balance}</p>
-      <p><strong>Food Type:</strong> ${booking.veg_non_veg}</p>
-      <p><strong>Menu Items:</strong> ${booking.menu_item.join(", ")}</p>
-      <p><strong>Notes:</strong> ${booking.notes}</p>
+<h2 style="text-align:center; font-family: Arial, sans-serif; color: #333;">Booking Confirmation</h2>
+
+<table style="width: 100%; max-width: 600px; margin: 0 auto; border-collapse: collapse; font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+  <tbody>
+    <tr style="border-bottom: 1px solid #ccc;">
+      <td style="padding: 8px; font-weight: bold;">Booking ID:</td>
+      <td style="padding: 8px;">${booking.booking_id}</td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; font-weight: bold;">Hall Name:</td>
+      <td style="padding: 8px;">${booking.hall_name}</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; font-weight: bold;">Name:</td>
+      <td style="padding: 8px;">${booking.guest_name}</td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; font-weight: bold;">Mobile No:</td>
+      <td style="padding: 8px;">${booking.mobile_no}</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; font-weight: bold;">No. of Packs:</td>
+      <td style="padding: 8px;">${booking.no_of_packs}</td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; font-weight: bold;">Rate Plan:</td>
+      <td style="padding: 8px;">${booking.rate_plan}</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; font-weight: bold;">Advance Payment:</td>
+      <td style="padding: 8px;">₹${booking.advance_payment}</td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; font-weight: bold;">Total Payment:</td>
+      <td style="padding: 8px;">₹${booking.total_payment}</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; font-weight: bold;">Balance:</td>
+      <td style="padding: 8px;">₹${booking.balance}</td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; font-weight: bold;">Food Type:</td>
+      <td style="padding: 8px;">${booking.veg_non_veg}</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px; font-weight: bold;">Menu Items:</td>
+      <td style="padding: 8px;">${booking.menu_item.join(", ")}</td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; font-weight: bold;">Notes:</td>
+      <td style="padding: 8px;">${booking.notes}</td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td style="padding: 8px; font-weight: bold;">Status:</td>
+      <td style="padding: 8px;">${booking.status}</td>
+    </tr>
+  </tbody>
+</table>
     `;
 
     // Email options
