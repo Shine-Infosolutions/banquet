@@ -1,7 +1,17 @@
 const mongoose = require("mongoose");
 
 const menuItemSchema = new mongoose.Schema({
-  name: { type: String, required: true, unique: true }
+  category: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: String // store filename
+  }
 });
 
 module.exports = mongoose.model("MenuItem", menuItemSchema);

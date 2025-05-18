@@ -3,10 +3,14 @@ const MenuItem = require("../models/MenuItem");
 // Add a new menu item
 exports.addMenuItem = async (req, res) => {
   try {
-    const { name } = req.body;
-    const item = new MenuItem({ name });
-    await item.save();
-    res.status(201).json(item);
+    const menuItem = new MenuItem({
+      category: req.body.category,
+      name: req.body.name,
+      image: req.file ? req.file.filename : null
+    });
+
+    await menuItem.save();
+    res.status(201).json(menuItem);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
