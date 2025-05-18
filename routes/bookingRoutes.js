@@ -6,5 +6,6 @@ router.post("/bookings", bookingController.createBooking);
 router.get("/bookings", bookingController.getAllBookings);
 router.put("/bookings/:id", bookingController.updateBooking);
 router.get("/bookings/search", bookingController.searchBookingByHall);
+router.get("/bookings/search-menu", bookingController.searchBookingByMenuItem);
 
 module.exports = router;

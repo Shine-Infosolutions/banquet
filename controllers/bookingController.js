@@ -137,3 +137,26 @@ exports.searchBookingByHall = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+// GET /api/bookings/search-menu?item=Paneer Butter Masala
+exports.searchBookingByMenuItem = async (req, res) => {
+  try {
+    const { item } = req.query;
+    if (!item) {
+      return res.status(400).json({ error: "item query parameter is required" });
+    }
+
+    const bookings = await Booking.find({
+      menu_item: { $regex: new RegExp(item, "i") } // case-insensitive partial match
+    });
+
+    if (bookings.length === 0) {
+      return res.status(404).json({ message: "No bookings found with the given menu item" });
+    }
+
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
