@@ -44,7 +44,8 @@ const bookingSchema = new mongoose.Schema({
   },
   rate_plan: {
     type: String,
-    required: true
+    required: true,
+    enum: ["Platinum", "Silver", "Gold"]
   },
   notes: {
     type: String,
@@ -68,6 +69,10 @@ const bookingSchema = new mongoose.Schema({
     type: String,
     required: true,
     enum: ["Veg", "Non-Veg", "Both"]
+  },
+  menu_category: {
+    type: String,
+    required: true
   },
   menu_item: {
     type: [String],
