@@ -117,3 +117,23 @@ exports.updateBooking = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
+// GET /api/bookings/search?hall_name=Regalia Hall
+exports.searchBookingByHall = async (req, res) => {
+  try {
+    const { hall_name } = req.query;
+    if (!hall_name) {
+      return res.status(400).json({ error: "hall_name query parameter is required" });
+    }
+
+    const bookings = await Booking.find({ hall_name: { $regex: new RegExp(hall_name, "i") } });
+
+    if (bookings.length === 0) {
+      return res.status(404).json({ message: "No bookings found for the given hall name" });
+    }
+
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
