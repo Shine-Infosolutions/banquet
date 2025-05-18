@@ -16,8 +16,7 @@ exports.addMenuItem = async (req, res) => {
   }
 };
 
-// Get all menu items
-exports.getMenuItems = async (req, res) => {
+exports.getAllMenuItems = async (req, res) => {
   try {
     const items = await MenuItem.find();
     res.json(items);
