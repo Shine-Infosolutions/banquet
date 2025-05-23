@@ -4,7 +4,7 @@ const cors = require("cors");
 require("dotenv").config();
 const bookingRoutes = require("./routes/bookingRoutes");
 const menuRoutes = require("./routes/menuRoutes");
-const menuCategoryRoutes = require("./routes/menuCategoryRoutes");
+//const menuCategoryRoutes = require("./routes/menuCategoryRoutes");
 const connectDB = require("./db/db");
 
 const app = express();
@@ -18,7 +18,7 @@ connectDB();
 // Use routes
 app.use("/api", bookingRoutes);
 app.use("/api", menuRoutes);
-app.use("/api", menuCategoryRoutes);
+//app.use("/api", menuCategoryRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello API IS LIVE");
