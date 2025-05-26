@@ -5,6 +5,7 @@ require("dotenv").config();
 const connectDB = require("./db/db");
 const menuItemRoutes = require('./routes/menuItemRoutes'); 
 const menuCategoryRoutes = require('./routes/menuCategoryRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 // Routes
 app.use('/api/menu-items', menuItemRoutes);
 app.use('/api/menu-categories', menuCategoryRoutes);
+app.use('/api/bookings', bookingRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;

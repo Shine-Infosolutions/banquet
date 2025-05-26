@@ -21,3 +21,19 @@ exports.getAllMenuItems = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+
+exports.getByTypeAndRate = async (req, res) => {
+  try {
+    const { type, rate } = req.query;
+
+    if (!type || !['veg', 'non_veg'].includes(type) || !rate || !['Silver', 'Gold', 'Platinum'].includes(rate)) {
+      return res.status(400).json({ error: 'Invalid or missing type/rate parameters' });
+    }
+
+    const items = await MenuItem.find({ type, rate });
+    res.json(items);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
