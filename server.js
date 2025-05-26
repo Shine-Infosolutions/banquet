@@ -18,7 +18,12 @@ connectDB();
 // Use routes
 app.use("/api", bookingRoutes);
 app.use("/api", menuRoutes);
-app.use("/api/categories", menuCategoryRoutes);
+app.use("/api", menuCategoryRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Hello API IS LIVE");
+});
+
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
