@@ -54,3 +54,15 @@ exports.deleteMenuCategory = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+
+// Get categories based on type
+exports.getCategoriesByType = async (req, res) => {
+  try {
+    const { type } = req.query;
+    const categories = await MenuCategory.find({ type });
+    res.json(categories);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

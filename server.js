@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 const connectDB = require("./db/db");
+const menuItemRoutes = require('./routes/menuItemRoutes'); 
 const menuCategoryRoutes = require('./routes/menuCategoryRoutes');
 
 const app = express();
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 // Routes
+app.use('/api/menu-items', menuItemRoutes);
 app.use('/api/menu-categories', menuCategoryRoutes);
 
 // Start the server
