@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 const connectDB = require("./db/db");
+const menuCategoryRoutes = require('./routes/menuCategoryRoutes');
 
 const app = express();
 
@@ -14,6 +15,9 @@ connectDB();
 app.get("/", (req, res) => {
   res.send("Hello API IS LIVE");
 });
+
+// Routes
+app.use('/api/menu-categories', menuCategoryRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
